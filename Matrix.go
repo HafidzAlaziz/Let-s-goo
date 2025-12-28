@@ -11,87 +11,90 @@ import (
 //═══════════════════════════════════════════════════════════════════════════════
 
 func Soal3() {
-	// PARAMETER PAKET 8 → N = 2
-	N := 2
+	// PARAMETER PAKET 8 → ukuranMatriks = 2 (berarti matriks 2x2)
+	ukuranMatriks := 2
 
-	// --- Generate Matrix A ---
-	A := make([][]int, N)
-	for i := range A {
-		A[i] = make([]int, N)
-		for j := range N {
-			A[i][j] = rand.Intn(20) + 1 // 1..20
+	// --- Buat Matriks A dengan angka random ---
+	matriksA := make([][]int, ukuranMatriks)
+	for baris := range matriksA {
+		matriksA[baris] = make([]int, ukuranMatriks)
+		for kolom := range ukuranMatriks {
+			matriksA[baris][kolom] = rand.Intn(20) + 1 // Angka random 1-20
 		}
 	}
 
-	// --- Generate Matrix B ---
-	B := make([][]int, N)
-	for i := range B {
-		B[i] = make([]int, N)
-		for j := range N {
-			B[i][j] = rand.Intn(20) + 1
+	// --- Buat Matriks B dengan angka random ---
+	matriksB := make([][]int, ukuranMatriks)
+	for baris := range matriksB {
+		matriksB[baris] = make([]int, ukuranMatriks)
+		for kolom := range ukuranMatriks {
+			matriksB[baris][kolom] = rand.Intn(20) + 1 // Angka random 1-20
 		}
 	}
 
-	// --- Print Header ---
+	// --- Tampilkan Header ---
 	fmt.Println("╔════════════════════════════════════════════════════════╗")
 	fmt.Println("║                    SOAL NO. 3                          ║")
 	fmt.Println("║              Perkalian Matriks & Trace                 ║")
 	fmt.Println("╚════════════════════════════════════════════════════════╝")
-	fmt.Printf("\nParameter: N = %d (Matriks %dx%d)\n\n", N, N, N)
+	fmt.Printf("\nParameter: N = %d (Matriks %dx%d)\n\n", ukuranMatriks, ukuranMatriks, ukuranMatriks)
 
-	// --- Print Matrix A ---
+	// --- Tampilkan Matriks A ---
 	fmt.Println("Matrix A:")
-	for i := range N {
+	for baris := range ukuranMatriks {
 		fmt.Print("  [ ")
-		for j := range N {
-			fmt.Printf("%3d ", A[i][j])
+		for kolom := range ukuranMatriks {
+			fmt.Printf("%3d ", matriksA[baris][kolom])
 		}
 		fmt.Println("]")
 	}
 
-	// --- Print Matrix B ---
+	// --- Tampilkan Matriks B ---
 	fmt.Println("\nMatrix B:")
-	for i := range N {
+	for baris := range ukuranMatriks {
 		fmt.Print("  [ ")
-		for j := range N {
-			fmt.Printf("%3d ", B[i][j])
+		for kolom := range ukuranMatriks {
+			fmt.Printf("%3d ", matriksB[baris][kolom])
 		}
 		fmt.Println("]")
 	}
 
-	// --- Perkalian Matriks R = A x B ---
-	R := make([][]int, N)
-	for i := range N {
-		R[i] = make([]int, N)
-		for j := range N {
-			sum := 0
-			for k := range N {
-				sum += A[i][k] * B[k][j]
+	// --- Kalikan Matriks A x B = Hasil ---
+	// Rumus: Hasil[i][j] = A[i][0]*B[0][j] + A[i][1]*B[1][j] + ...
+	matriksHasil := make([][]int, ukuranMatriks)
+	for baris := range ukuranMatriks {
+		matriksHasil[baris] = make([]int, ukuranMatriks)
+		for kolom := range ukuranMatriks {
+			jumlah := 0
+			for indeks := range ukuranMatriks {
+				// Kalikan baris A dengan kolom B, lalu jumlahkan
+				jumlah += matriksA[baris][indeks] * matriksB[indeks][kolom]
 			}
-			R[i][j] = sum
+			matriksHasil[baris][kolom] = jumlah
 		}
 	}
 
-	// --- Print Hasil Perkalian ---
+	// --- Tampilkan Hasil Perkalian ---
 	fmt.Println("\n" + strings.Repeat("─", 56))
 	fmt.Println("Hasil Perkalian: R = A × B")
 	fmt.Println(strings.Repeat("─", 56))
-	for i := range N {
+	for baris := range ukuranMatriks {
 		fmt.Print("  [ ")
-		for j := range N {
-			fmt.Printf("%4d ", R[i][j])
+		for kolom := range ukuranMatriks {
+			fmt.Printf("%4d ", matriksHasil[baris][kolom])
 		}
 		fmt.Println("]")
 	}
 
-	// --- Hitung Trace ---
-	trace := 0
-	for i := range N {
-		trace += R[i][i]
+	// --- Hitung Trace (Jumlah diagonal utama) ---
+	// Trace = Hasil[0][0] + Hasil[1][1] + Hasil[2][2] + ...
+	nilaiTrace := 0
+	for diagonal := range ukuranMatriks {
+		nilaiTrace += matriksHasil[diagonal][diagonal]
 	}
 
 	fmt.Println("\n" + strings.Repeat("─", 56))
-	fmt.Printf("Trace (Jumlah Diagonal Utama): %d\n", trace)
+	fmt.Printf("Trace (Jumlah Diagonal Utama): %d\n", nilaiTrace)
 	fmt.Println(strings.Repeat("─", 56))
 }
 
@@ -100,68 +103,71 @@ func Soal3() {
 //═══════════════════════════════════════════════════════════════════════════════
 
 func Soal4() {
-	// PARAMETER PAKET 8 → N = 3
-	N := 3
+	// PARAMETER PAKET 8 → ukuranMatriks = 3 (berarti matriks 3x3)
+	ukuranMatriks := 3
 
-	// --- Generate Matrix M ---
-	M := make([][]int, N)
-	for i := range M {
-		M[i] = make([]int, N)
-		for j := range N {
-			M[i][j] = rand.Intn(20) + 1 // 1..20
+	// --- Buat Matriks M dengan angka random ---
+	matriksM := make([][]int, ukuranMatriks)
+	for baris := range matriksM {
+		matriksM[baris] = make([]int, ukuranMatriks)
+		for kolom := range ukuranMatriks {
+			matriksM[baris][kolom] = rand.Intn(20) + 1 // Angka random 1-20
 		}
 	}
 
-	// --- Print Header ---
+	// --- Tampilkan Header ---
 	fmt.Println("\n\n╔════════════════════════════════════════════════════════╗")
 	fmt.Println("║                    SOAL NO. 4                          ║")
 	fmt.Println("║              Transformasi Baris & Maksimum             ║")
 	fmt.Println("╚════════════════════════════════════════════════════════╝")
-	fmt.Printf("\nParameter: N = %d (Matriks %dx%d)\n\n", N, N, N)
+	fmt.Printf("\nParameter: N = %d (Matriks %dx%d)\n\n", ukuranMatriks, ukuranMatriks, ukuranMatriks)
 
-	// --- Print Matrix M Awal ---
+	// --- Tampilkan Matriks M Sebelum Ditukar ---
 	fmt.Println("Matrix M (Generated):")
-	for i := range N {
+	for baris := range ukuranMatriks {
 		fmt.Print("  [ ")
-		for j := range N {
-			fmt.Printf("%3d ", M[i][j])
+		for kolom := range ukuranMatriks {
+			fmt.Printf("%3d ", matriksM[baris][kolom])
 		}
 		fmt.Println("]")
 	}
 
-	// --- Tukar Baris 0 dengan Baris N-1 ---
-	fmt.Printf("\nMenukar Baris 0 dan %d...\n", N-1)
-	M[0], M[N-1] = M[N-1], M[0]
+	// --- Tukar Baris Pertama (0) dengan Baris Terakhir (N-1) ---
+	fmt.Printf("\nMenukar Baris 0 dan %d...\n", ukuranMatriks-1)
+	// Swap: tukar isi baris 0 dengan baris terakhir
+	matriksM[0], matriksM[ukuranMatriks-1] = matriksM[ukuranMatriks-1], matriksM[0]
 
-	// --- Print Matrix M Setelah Ditukar ---
+	// --- Tampilkan Matriks M Setelah Ditukar ---
 	fmt.Println("\n" + strings.Repeat("─", 56))
 	fmt.Println("Matrix M Terkini (Setelah Tukar Baris):")
 	fmt.Println(strings.Repeat("─", 56))
-	for i := range N {
+	for baris := range ukuranMatriks {
 		fmt.Print("  [ ")
-		for j := range N {
-			fmt.Printf("%3d ", M[i][j])
+		for kolom := range ukuranMatriks {
+			fmt.Printf("%3d ", matriksM[baris][kolom])
 		}
 		fmt.Println("]")
 	}
 
-	// --- Cari Nilai Maksimum ---
-	maxVal := M[0][0]
-	maxRow := 0
-	maxCol := 0
+	// --- Cari Nilai Terbesar di Matriks ---
+	nilaiTerbesar := matriksM[0][0] // Awalnya anggap angka pertama yang terbesar
+	barisTerbesar := 0              // Posisi baris dari angka terbesar
+	kolomTerbesar := 0              // Posisi kolom dari angka terbesar
 
-	for i := range N {
-		for j := range N {
-			if M[i][j] > maxVal {
-				maxVal = M[i][j]
-				maxRow = i
-				maxCol = j
+	// Loop semua elemen matriks untuk cari yang paling besar
+	for baris := range ukuranMatriks {
+		for kolom := range ukuranMatriks {
+			// Jika ketemu angka yang lebih besar, update
+			if matriksM[baris][kolom] > nilaiTerbesar {
+				nilaiTerbesar = matriksM[baris][kolom] // Simpan angka terbesar
+				barisTerbesar = baris                  // Simpan posisi barisnya
+				kolomTerbesar = kolom                  // Simpan posisi kolomnya
 			}
 		}
 	}
 
-	// --- Print Hasil ---
+	// --- Tampilkan Hasil ---
 	fmt.Println("\n" + strings.Repeat("─", 56))
-	fmt.Printf("Nilai Maksimum: %d ditemukan di Posisi (%d,%d)\n", maxVal, maxRow, maxCol)
+	fmt.Printf("Nilai Maksimum: %d ditemukan di Posisi (%d,%d)\n", nilaiTerbesar, barisTerbesar, kolomTerbesar)
 	fmt.Println(strings.Repeat("─", 56))
 }
