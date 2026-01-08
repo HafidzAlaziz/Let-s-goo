@@ -10,14 +10,25 @@ import (
 //═══════════════════════════════════════════════════════════════════════════════
 
 func main() {
-	// Jalankan Soal 3
-	Soal3()
+	fmt.Println("╔════════════════════════════════════════════════════════╗")
+	fmt.Println("║                    Kelompok H & L                      ║")
+	fmt.Println("║________________________________________________________║")
+	fmt.Println("║  Anggota :                                             ║")
+	fmt.Println("║           1. Lutfian Falah          (251552010027)     ║")
+	fmt.Println("║           2. Muhammad Hafidz Alaziz (251552010034)     ║")
+	fmt.Println("╚════════════════════════════════════════════════════════╝")
+	// himpunan
+	h1()
+	h2()
 
-	// Jalankan Soal 4
-	Soal4()
+	// martrix
 
-	// Jalankan Soal 6 (Fungsi & Deret)
-	Soal6()
+	Matrix1()
+	Matrix2()
+
+	// deret & fungsi
+	fd1()
+	fd2()
 
 	// Footer
 	fmt.Println("\n" + strings.Repeat("═", 56))

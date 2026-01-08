@@ -10,7 +10,7 @@ import (
 //                           SOAL 3: PERKALIAN MATRIKS & TRACE
 //═══════════════════════════════════════════════════════════════════════════════
 
-func Soal3() {
+func Matrix1() {
 	// PARAMETER PAKET 8 → ukuranMatriks = 2 (berarti matriks 2x2)
 	ukuranMatriks := 2
 
@@ -34,8 +34,8 @@ func Soal3() {
 
 	// --- Tampilkan Header ---
 	fmt.Println("╔════════════════════════════════════════════════════════╗")
-	fmt.Println("║                    SOAL NO. 3                          ║")
-	fmt.Println("║              Perkalian Matriks & Trace                 ║")
+	fmt.Println("║                       Materi 2                         ║")
+	fmt.Println("║                       Matrix 1                         ║")
 	fmt.Println("╚════════════════════════════════════════════════════════╝")
 	fmt.Printf("\nParameter: N = %d (Matriks %dx%d)\n\n", ukuranMatriks, ukuranMatriks, ukuranMatriks)
 
@@ -102,7 +102,7 @@ func Soal3() {
 //                      SOAL 4: TRANSFORMASI BARIS & MAKSIMUM
 //═══════════════════════════════════════════════════════════════════════════════
 
-func Soal4() {
+func Matrix2() {
 	// PARAMETER PAKET 8 → ukuranMatriks = 3 (berarti matriks 3x3)
 	ukuranMatriks := 3
 
@@ -117,8 +117,8 @@ func Soal4() {
 
 	// --- Tampilkan Header ---
 	fmt.Println("\n\n╔════════════════════════════════════════════════════════╗")
-	fmt.Println("║                    SOAL NO. 4                          ║")
-	fmt.Println("║              Transformasi Baris & Maksimum             ║")
+	fmt.Println("║                      Materi 2                          ║")
+	fmt.Println("║                      Matrix 2                          ║")
 	fmt.Println("╚════════════════════════════════════════════════════════╝")
 	fmt.Printf("\nParameter: N = %d (Matriks %dx%d)\n\n", ukuranMatriks, ukuranMatriks, ukuranMatriks)
 
