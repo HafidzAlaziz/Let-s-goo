@@ -113,8 +113,9 @@ func Selisihgabungan(a, b []int) []int {
 // -------------------- PEMISAH: PENGELOMPOKAN HP --------------------
 // Fungsi: Pengelompokan (dipindahkan dari pengelompokanhp.go)
 func h2() {
-	S := []int{1, 2, 3, 4}
+	rand.Seed(time.Now().UnixNano())
 	K := 4
+	S := []int{1, 2, 3, 4}
 	count := 0
 
 	fmt.Println("╔════════════════════════════════════════════════════════╗")
